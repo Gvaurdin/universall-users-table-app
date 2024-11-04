@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import UsersTable from './UsersTable';
+import UserDetails from './UserDetails';
 
 export default function FetchUsers({ columns, minId = 1, maxId = 10, showTable = true }) {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedUser, setSelectedUser] = useState(null); // Состояние для выбранного пользователя
 
     useEffect(() => {
         const fetchUsersData = async () => {
@@ -27,11 +29,20 @@ export default function FetchUsers({ columns, minId = 1, maxId = 10, showTable =
         fetchUsersData();
     }, [minId, maxId]);
 
+    const handleUserSelect = (user) => {
+        setSelectedUser(user);
+    };
+
     if (loading) return <Spinner />;
     if (error) return <div className='error'>ERROR {error}</div>;
     if (users.length === 0) return <h4>Пользователи не найдены</h4>;
 
-    return showTable ? <UsersTable users={users} columns={columns} /> : null;
+    return (
+        <>
+            {showTable && <UsersTable users={users} columns={columns} onUserSelect={handleUserSelect} />}
+            {selectedUser && <UserDetails userId={selectedUser.id} />}
+        </>
+    );
 }
 
 function Spinner() {

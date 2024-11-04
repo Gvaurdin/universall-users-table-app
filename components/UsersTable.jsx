@@ -1,5 +1,5 @@
-export default function UsersTable({ users, columns }) {
-    return <>
+export default function UsersTable({ users, columns, onUserSelect }) {
+    return (
         <table border="1" cellPadding="10">
             <thead>
                 <tr>
@@ -10,7 +10,7 @@ export default function UsersTable({ users, columns }) {
             </thead>
             <tbody>
                 {users.map((user) => (
-                    <tr key={user.id}>
+                    <tr key={user.id} onClick={() => onUserSelect(user)} style={{ cursor: 'pointer' }}>
                         {columns.map((col) => (
                             <td key={col.key}>{col.render ? col.render(user) : user[col.key]}</td>
                         ))}
@@ -18,5 +18,5 @@ export default function UsersTable({ users, columns }) {
                 ))}
             </tbody>
         </table>
-    </>
+    );
 }

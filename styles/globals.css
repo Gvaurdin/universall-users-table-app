@@ -86,3 +86,27 @@ header {
   margin-top: 50px;
 }
 
+.error {
+  color: red;
+}
+
+.user-details {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.user-posts {
+  margin-top: 15px;
+}
+
+.user-posts ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.user-posts li {
+  margin-bottom: 10px;
+}

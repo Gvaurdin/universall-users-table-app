@@ -12,8 +12,7 @@ export default function Home() {
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <div className="centered-header">
-      <h1>Добро пожаловать в приложение пользователей</h1>
-      <p>Выберите один из вариантов просмотра таблицы пользователей:</p>
+      <h1>Выберите один из вариантов просмотра таблицы пользователей:</h1>
       <div className="link-container">
         <Link href="/users" className="custom-link">
           Таблица с загрузкой при открытии
